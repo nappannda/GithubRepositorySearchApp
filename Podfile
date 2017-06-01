@@ -6,6 +6,10 @@ target 'GithubRepositorySearchApp' do
   use_frameworks!
 
   # Pods for GithubRepositorySearchApp
+  pod 'RxSwift',    '~> 3.0'
+  pod 'RxCocoa',    '~> 3.0'
+  pod 'ObjectMapper', '~> 2.2'
+  pod 'APIKit', '~> 3.0'
 
   target 'GithubRepositorySearchAppTests' do
     inherit! :search_paths
