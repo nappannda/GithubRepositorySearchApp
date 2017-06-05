@@ -8,7 +8,7 @@
 import ObjectMapper
 
 class GithubRepositories: Mappable {
-    var repositories: [GithubRepository]?
+    var repositories = [GithubRepository]()
     
     required convenience init?(map: Map) {
         self.init()
@@ -21,6 +21,8 @@ class GithubRepositories: Mappable {
 
 class GithubRepository: Mappable {
     var name: String?
+    var starNumber: Int?
+    var language: String?
     var user: GithubUser?
     
     required convenience init?(map: Map) {
@@ -29,6 +31,8 @@ class GithubRepository: Mappable {
     
     func mapping(map: Map) {
         name <- map["full_name"]
+        starNumber <- map["stargazers_count"]
+        language <- map["language"]
         user <- map["owner"]
     }
 }
