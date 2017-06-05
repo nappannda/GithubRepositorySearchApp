@@ -7,19 +7,53 @@
 //
 
 import UIKit
+import APIKit
+import RxSwift
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var repositoriesTableView: UITableView!
+    
+    let disposeBag = DisposeBag()
+    var repositories = GithubRepositories()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        repositoriesTableView.delegate = self
+        repositoriesTableView.dataSource = self
+        
+        let request = FetchRepositoriesRequest.init(query: "tetris+language:assembly", sort: "stars", order: "desc")
+        Session.rx_response(request: request)
+            .subscribe(
+                onNext: { GithubRepositories in
+                    self.repositories = GithubRepositories
+                    self.repositoriesTableView.reloadData()
+                },
+                onError:{ err in
+                    print("err",err)
+                },
+                onCompleted: {
+                
+                }
+            )
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return repositories.repositories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath as IndexPath) as! GithubRepositoryTableViewCell
+        cell.setCell(repository: repositories.repositories[indexPath.row])
+        
+        return cell
+    }
 
 }
 
