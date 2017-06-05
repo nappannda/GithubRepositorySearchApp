@@ -9,6 +9,11 @@
 import UIKit
 
 class GithubRepositoryTableViewCell: UITableViewCell {
+    @IBOutlet weak var ownerAvatarImageView: UIImageView!
+    @IBOutlet weak var repositoryNameLabel: UILabel!
+    @IBOutlet weak var ownerNameLabel: UILabel!
+    @IBOutlet weak var starCountLabel: UILabel!
+    @IBOutlet weak var languageNameLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +23,13 @@ class GithubRepositoryTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    func setCell(repository: GithubRepository) {
+        repositoryNameLabel.text = repository.name
+        ownerNameLabel.text = repository.user?.name
+        starCountLabel.text = "星:" + (repository.starNumber?.description)!
+        languageNameLabel.text = repository.language
     }
 
 }
