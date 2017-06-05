@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class GithubRepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var ownerAvatarImageView: UIImageView!
@@ -26,6 +27,7 @@ class GithubRepositoryTableViewCell: UITableViewCell {
     }
     
     func setCell(repository: GithubRepository) {
+        ownerAvatarImageView.af_setImage(withURL: URL.init(string: (repository.user?.avatarUrl)!)!)
         repositoryNameLabel.text = repository.name
         ownerNameLabel.text = repository.user?.name
         starCountLabel.text = "星:" + (repository.starNumber?.description)!
