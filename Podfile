@@ -10,6 +10,7 @@ target 'GithubRepositorySearchApp' do
   pod 'RxCocoa',    '~> 3.0'
   pod 'ObjectMapper', '~> 2.2'
   pod 'APIKit', '~> 3.0'
+  pod 'AlamofireImage', '~> 3.1'
 
   target 'GithubRepositorySearchAppTests' do
     inherit! :search_paths
