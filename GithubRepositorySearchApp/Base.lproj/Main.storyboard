@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,38 +52,38 @@
                                     <constraint firstAttribute="height" constant="50" id="2Ba-Nu-byZ"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-l3-PFW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-l3-PFW">
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryCell" rowHeight="50" id="htL-H9-blw" customClass="GithubRepositoryTableViewCell" customModule="GithubRepositorySearchApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryCell" rowHeight="60" id="htL-H9-blw" customClass="GithubRepositoryTableViewCell" customModule="GithubRepositorySearchApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="htL-H9-blw" id="k48-Xb-URP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KSt-J3-hTX">
-                                                    <rect key="frame" x="4" y="5" width="40" height="40"/>
+                                                    <rect key="frame" x="4" y="5" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="UTS-ip-tVT"/>
-                                                        <constraint firstAttribute="width" constant="40" id="gb0-zc-hCT"/>
+                                                        <constraint firstAttribute="height" constant="50" id="UTS-ip-tVT"/>
+                                                        <constraint firstAttribute="width" constant="50" id="gb0-zc-hCT"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RepositoryTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baU-Rc-kJU">
-                                                    <rect key="frame" x="52" y="4" width="114.5" height="21"/>
+                                                    <rect key="frame" x="62" y="4" width="115" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbs-xd-cCm">
-                                                    <rect key="frame" x="52" y="27" width="48" height="19.5"/>
+                                                    <rect key="frame" x="62" y="27" width="48" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Star" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L06-vH-Ah3">
-                                                    <rect key="frame" x="335.5" y="4" width="31.5" height="21"/>
+                                                    <rect key="frame" x="335" y="4" width="32" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -99,6 +100,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="pfx-Pm-XpI" secondAttribute="trailing" constant="8" id="9Dq-nU-Lbx"/>
                                                 <constraint firstItem="KSt-J3-hTX" firstAttribute="top" secondItem="k48-Xb-URP" secondAttribute="top" constant="5" id="B9O-rh-mlw"/>
                                                 <constraint firstItem="pfx-Pm-XpI" firstAttribute="top" secondItem="L06-vH-Ah3" secondAttribute="bottom" constant="2" id="EoX-z3-DFh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="pfx-Pm-XpI" secondAttribute="bottom" constant="3.5" id="F9h-4y-MM2"/>
                                                 <constraint firstAttribute="bottom" secondItem="KSt-J3-hTX" secondAttribute="bottom" constant="5" id="JiO-8f-sVd"/>
                                                 <constraint firstItem="KSt-J3-hTX" firstAttribute="leading" secondItem="k48-Xb-URP" secondAttribute="leading" constant="4" id="MmG-v5-4Z4"/>
                                                 <constraint firstItem="gbs-xd-cCm" firstAttribute="top" secondItem="baU-Rc-kJU" secondAttribute="bottom" constant="2" id="Vb9-pN-Hdi"/>
@@ -134,8 +136,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="orderPickerView" destination="AYG-p7-yWZ" id="KWT-zh-GPX"/>
                         <outlet property="repositoriesTableView" destination="iBf-l3-PFW" id="Orx-59-jBf"/>
                         <outlet property="searchBar" destination="kw9-Nh-gSn" id="kYJ-Ap-eIh"/>
+                        <outlet property="sortPickerView" destination="IQj-pc-ogV" id="tTa-j9-hvs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
