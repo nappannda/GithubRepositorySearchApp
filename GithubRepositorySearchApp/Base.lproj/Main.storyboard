@@ -135,6 +135,7 @@
                     </view>
                     <connections>
                         <outlet property="repositoriesTableView" destination="iBf-l3-PFW" id="Orx-59-jBf"/>
+                        <outlet property="searchBar" destination="kw9-Nh-gSn" id="kYJ-Ap-eIh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

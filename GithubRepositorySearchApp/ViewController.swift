@@ -9,10 +9,13 @@
 import UIKit
 import APIKit
 import RxSwift
+import RxCocoa
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var repositoriesTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchText = ""
     
     let disposeBag = DisposeBag()
     var repositories = GithubRepositories()
@@ -22,18 +25,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         repositoriesTableView.delegate = self
         repositoriesTableView.dataSource = self
         
-        let request = FetchRepositoriesRequest.init(query: "tetris+language:assembly", sort: "stars", order: "desc")
+        
+        searchBar.rx.text
+            .subscribe(onNext: { [unowned self] q in
+                    self.searchText = q!
+                    self.searchRepository()
+                },
+                onError: { err in
+                },
+                onCompleted: {
+                }
+            )
+            .addDisposableTo(disposeBag)
+        
+        
+    }
+    
+    func searchRepository() {
+        let request = FetchRepositoriesRequest.init(query: self.searchText, sort: "", order: "")
         Session.rx_response(request: request)
             .subscribe(
                 onNext: { GithubRepositories in
                     self.repositories = GithubRepositories
-                    self.repositoriesTableView.reloadData()
                 },
                 onError:{ err in
-                    print("err",err)
                 },
                 onCompleted: {
-                
+                    self.repositoriesTableView.reloadData()
                 }
             )
             .addDisposableTo(disposeBag)
