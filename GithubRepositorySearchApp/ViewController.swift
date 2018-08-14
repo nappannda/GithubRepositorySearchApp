@@ -22,9 +22,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let orderList = ["desc", "asc"]
     let disposeBag = DisposeBag()
     var repositories = GithubRepositories()
-    var searchText = ""
-    var sortText = ""
-    var orderText = "desc"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,21 +39,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             .throttle(1.0, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .subscribe(onNext: { [unowned self] q in
-                    self.searchText = q
-                    self.searchRepository()
+                    self.searchRepository(searchText: q)
                 },
                 onError: { err in
                 },
                 onCompleted: {
                 }
             )
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         
         
     }
     
-    func searchRepository() {
-        let request = FetchRepositoriesRequest.init(query: self.searchText, sort: sortText, order: orderText)
+    func searchRepository(searchText: String) {
+        let request = FetchRepositoriesRequest.init(query: searchText, sort: sortList[sortPickerView.selectedRow(inComponent: 0)], order: orderList[orderPickerView.selectedRow(inComponent: 0)])
         Session.rx_response(request: request)
             .subscribe(
                 onNext: { GithubRepositories in
@@ -68,7 +64,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.repositoriesTableView.reloadData()
                 }
             )
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,12 +105,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 1 {
-            sortText = sortList[row]
-        } else {
-            orderText = orderList[row]
-        }
-        searchRepository()
+        searchRepository(searchText: searchBar.text!)
     }
 
     
