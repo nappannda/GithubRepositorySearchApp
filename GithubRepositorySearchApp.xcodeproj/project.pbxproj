@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B4375E4586CE64AA54193DE /* Pods_GithubRepositorySearchAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD03EB3D44930D94AAA26FE7 /* Pods_GithubRepositorySearchAppTests.framework */; };
 		CE5A40329895D17DC13537B5 /* Pods_GithubRepositorySearchAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FA07B8740BA1171DE8A59D /* Pods_GithubRepositorySearchAppUITests.framework */; };
+		F79462F52122AD1C003E87AC /* DecodableDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79462F42122AD1C003E87AC /* DecodableDataParser.swift */; };
 		F79AC3CA1EE3704800ABCF69 /* Session+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AC3C91EE3704800ABCF69 /* Session+Extension.swift */; };
 		F79AC3CC1EE3870800ABCF69 /* GithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AC3CB1EE3870800ABCF69 /* GithubRepository.swift */; };
 		F79AC3CE1EE5271200ABCF69 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AC3CD1EE5271200ABCF69 /* GithubAPI.swift */; };
@@ -50,6 +51,7 @@
 		8E0AD9E55C4D429CFF3A3DC8 /* Pods-GithubRepositorySearchAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubRepositorySearchAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubRepositorySearchAppUITests/Pods-GithubRepositorySearchAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CF51A3EF2E3A647F6AA19CA4 /* Pods-GithubRepositorySearchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubRepositorySearchApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubRepositorySearchApp/Pods-GithubRepositorySearchApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD03EB3D44930D94AAA26FE7 /* Pods_GithubRepositorySearchAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubRepositorySearchAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F79462F42122AD1C003E87AC /* DecodableDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableDataParser.swift; sourceTree = "<group>"; };
 		F79AC3C91EE3704800ABCF69 /* Session+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Extension.swift"; sourceTree = "<group>"; };
 		F79AC3CB1EE3870800ABCF69 /* GithubRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
 		F79AC3CD1EE5271200ABCF69 /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				F79AC3CB1EE3870800ABCF69 /* GithubRepository.swift */,
 				F79AC3CD1EE5271200ABCF69 /* GithubAPI.swift */,
 				F79AC3CF1EE5732600ABCF69 /* GithubRepositoryTableViewCell.swift */,
+				F79462F42122AD1C003E87AC /* DecodableDataParser.swift */,
 			);
 			path = GithubRepositorySearchApp;
 			sourceTree = "<group>";
@@ -324,7 +327,6 @@
 				"${BUILT_PRODUCTS_DIR}/APIKit/APIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -334,7 +336,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -410,6 +411,7 @@
 				F79AC3D01EE5732600ABCF69 /* GithubRepositoryTableViewCell.swift in Sources */,
 				F79AC3CA1EE3704800ABCF69 /* Session+Extension.swift in Sources */,
 				F7EB09941EDFECFD00E58A7E /* ViewController.swift in Sources */,
+				F79462F52122AD1C003E87AC /* DecodableDataParser.swift in Sources */,
 				F7EB09921EDFECFD00E58A7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

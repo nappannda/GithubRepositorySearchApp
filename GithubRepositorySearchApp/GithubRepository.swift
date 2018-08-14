@@ -5,48 +5,35 @@
 //  Created by 上原和輝 on 2017/06/04.
 //  Copyright © 2017年 nappannda. All rights reserved.
 //
-import ObjectMapper
 
-class GithubRepositories: Mappable {
+class GithubRepositories: Codable {
     var repositories = [GithubRepository]()
     
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        repositories <- map["items"]
+    enum CodingKeys: String, CodingKey {
+        case repositories = "items"
     }
 }
 
-class GithubRepository: Mappable {
+class GithubRepository: Codable {
     var name: String?
     var starNumber: Int?
     var language: String?
     var user: GithubUser?
     
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        name <- map["full_name"]
-        starNumber <- map["stargazers_count"]
-        language <- map["language"]
-        user <- map["owner"]
+    enum CodingKeys: String, CodingKey {
+        case name = "full_name"
+        case starNumber = "stargazers_count"
+        case language = "language"
+        case user = "owner"
     }
 }
 
-class GithubUser: Mappable {
+class GithubUser: Codable {
     var name: String?
     var avatarUrl: String?
     
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        name <- map["login"]
-        avatarUrl <- map["avatar_url"]
+    enum CodingKeys: String, CodingKey {
+        case name = "login"
+        case avatarUrl = "avatar_url"
     }
 }

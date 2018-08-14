@@ -6,13 +6,15 @@
 //  Copyright © 2017年 nappannda. All rights reserved.
 //
 import APIKit
-import ObjectMapper
 
 protocol GitHubRequest: Request {
     
 }
 
-extension GitHubRequest {
+extension GitHubRequest where Response: Decodable {
+    var dataParser: DataParser {
+        return DecodableDataParser()
+    }
     
     var baseURL: URL {
         return URL(string: "https://api.github.com")!
@@ -50,6 +52,9 @@ struct FetchRepositoriesRequest: GitHubRequest {
 
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> FetchRepositoriesRequest.Response {
-        return Mapper<GithubRepositories>().map(JSONObject: object)!
+        guard let data = object as? Data else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return try JSONDecoder().decode(GithubRepositories.self, from: data)
     }
 }
